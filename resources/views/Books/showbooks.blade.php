@@ -19,7 +19,7 @@
                                 <th>Name</th>
                                 <th>Author</th>
                                 <th>Publisher</th>
-                                 @if(Auth::user()->isAdmin())
+                                 @if(Auth::check() && Auth::user()->isAdmin())
                                 <th>&nbsp;</th>
                                 @endif
                             </thead>
