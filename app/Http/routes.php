@@ -14,8 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('book','BookController');
 
-
+Route::get('/showQR','BookController@showQR');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

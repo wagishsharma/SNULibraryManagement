@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css" media="all">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     <!-- Fonts -->
         <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
@@ -50,8 +50,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('home') }}">Home</a></li>
+                     @if(Auth::check() && Auth::user()->isAdmin())
+                    <li><a href="{{ url('book/create') }}">Add books</a></li>
+                    <li><a href="{{ url('/showQR') }}">Show QR</a></li>
+                    @endif
+                    <li><a href="{{ url('book') }}">Show all books</a></li>
                 </ul>
+
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

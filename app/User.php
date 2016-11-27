@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Book;
 
 class User extends Authenticatable
 {
@@ -29,5 +30,9 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->is_admin; // this looks for an admin column in your users table
+    }
+    public function books()
+    {
+        return $this->hasMany(Book::class);
     }
 }
