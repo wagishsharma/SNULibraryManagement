@@ -29,8 +29,8 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav >
-        <div class="container">
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div >
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
