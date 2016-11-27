@@ -31,7 +31,7 @@
                                         <td class="table-text"><div>{{ $book->publisher }}</div></td>
                                                                                
                                        
-                                        @if(Auth::user()->isAdmin())
+                                        @if(Auth::check() && Auth::user()->isAdmin())
                                         <!-- book Delete Button -->
                                         <td>
                                             <form action="{{url('book/' . $book->id)}}" method="POST">
