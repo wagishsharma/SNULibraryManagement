@@ -70,8 +70,8 @@ class BookController extends Controller
     {
         //
         $book = Book::find($id);
-        
-        return view('books.bookQR',compact('book')); 
+
+        return view('Books.bookQR',compact('book')); 
 
     }
 
@@ -121,6 +121,8 @@ class BookController extends Controller
             'books' => $this->books,
             //forUser($request->user()),
         ]);
+
+         
         
     }
 
