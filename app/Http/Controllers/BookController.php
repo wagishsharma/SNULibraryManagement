@@ -121,8 +121,6 @@ class BookController extends Controller
             'books' => $this->books,
             //forUser($request->user()),
         ]);
-
-         
         
     }
 
