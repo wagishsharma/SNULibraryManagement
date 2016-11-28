@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Book;
+use App\User;
+
 
 class BookController extends Controller
 {
@@ -70,8 +72,13 @@ class BookController extends Controller
     {
         //
         $book = Book::find($id);
-
-        return view('books.bookQR',compact('book')); 
+        if(Auth::check())
+        {
+            $user =Auth::user();
+           // dd($user);
+        }
+      
+        return view('books.bookQR',compact('book','user')); 
 
     }
 
@@ -123,5 +130,16 @@ class BookController extends Controller
         ]);
         
     }
+    public function storeBook(Request $request,$id)
+    {
+       // dd($request->all());
+        $user = User::find($id);
+        $user->book_count = $user->book_count - 1 ;
+        $user->books()->attach($request->book_id);
+        $user->save();
+         //return redirect('');
+        return redirect('home');
+    }
+
 
 }

@@ -35,7 +35,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="#" class="btn btn-info" role="button">Issue Book</a>
+                <a href="{{url('user/'.$user->id.'/book')}}" class="btn btn-info" role="button">Issue Book</a>
             @endif
 
         </div>
