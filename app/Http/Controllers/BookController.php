@@ -27,7 +27,7 @@ class BookController extends Controller
     public function index()
     {
         //
-        return view('books.showbooks', [
+        return view('Books.showbooks', [
             'books' => $this->books,
             //forUser($request->user()),
         ]);
@@ -41,7 +41,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        return view('books.addbooks');
+        return view('Books.addbooks');
 
     }
 
@@ -78,7 +78,7 @@ class BookController extends Controller
            // dd($user);
         }
       
-        return view('books.bookQR',compact('book','user')); 
+        return view('Books.bookQR',compact('book','user')); 
 
     }
 
