@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Book;
+use DB;
 use App\User;
 
 
@@ -138,11 +139,18 @@ class BookController extends Controller
         
        // dd($request->all());
         $user = User::find($id);
-        $user->book_count = $user->book_count - 1 ;
+        if(!(DB::table('book_user')->where('user_id', $user->id)->where('book_id', $book_id)->count()))
+        {
+            $user->book_count = $user->book_count - 1 ;
         $user->books()->attach($book_id);
         $user->save();
          //return redirect('');
         return redirect('home');
+        }
+         flash('You have already issued this book.');
+        return redirect('home');
+        
+        
     }
 
 
