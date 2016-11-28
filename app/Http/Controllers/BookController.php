@@ -139,15 +139,20 @@ class BookController extends Controller
         
        // dd($request->all());
         $user = User::find($id);
+        $book = Book::find($id);
         if(!(DB::table('book_user')->where('user_id', $user->id)->where('book_id', $book_id)->count()))
         {
             $user->book_count = $user->book_count - 1 ;
         $user->books()->attach($book_id);
         $user->save();
+        flash('The '.$book->name.' has been issued ');
          //return redirect('');
-        return redirect('home');
+        
         }
+        else
+        {
          flash('You have already issued this book.');
+        }
         return redirect('home');
         
         
