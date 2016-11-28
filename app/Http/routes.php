@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::resource('book','BookController');
 
 Route::get('/showQR','BookController@showQR');
-Route::get('/user/{id}/book','BookController@storeBook');
+Route::get('/user/{id}/book/{book_id}','BookController@storeBook');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

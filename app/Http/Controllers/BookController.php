@@ -130,12 +130,13 @@ class BookController extends Controller
         ]);
         
     }
-    public function storeBook(Request $request,$id)
+    public function storeBook($id, $book_id)
     {
+        
        // dd($request->all());
         $user = User::find($id);
         $user->book_count = $user->book_count - 1 ;
-        $user->books()->attach($request->book_id);
+        $user->books()->attach($book_id);
         $user->save();
          //return redirect('');
         return redirect('home');
