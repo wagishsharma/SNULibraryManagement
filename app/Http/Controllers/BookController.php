@@ -17,6 +17,9 @@ class BookController extends Controller
          $this->middleware('admin', ['only' => [
             'create',
         ]]);
+         $this->middleware('auth', ['only' => [
+            'show',
+        ]]);
          $this->books =Book::all();
     }
     /**
