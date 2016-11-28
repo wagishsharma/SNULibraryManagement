@@ -60,7 +60,7 @@ class BookController extends Controller
         //
          $this->validate($request, [
             'name' => 'required|max:255','publisher'=>'required|max:255', 'author'=>'required|max:255']);
-         $book =  $request->user()->books()->create([
+         $book =  Book::create([
             'name' => $request->name,'author'=>$request->author,'publisher' => $request->publisher,
         ]);
          return redirect('book');
@@ -139,21 +139,26 @@ class BookController extends Controller
         
        // dd($request->all());
         $user = User::find($id);
-        $book = Book::find($id);
-        if(!(DB::table('book_user')->where('user_id', $user->id)->where('book_id', $book_id)->count()))
+        $book = Book::find($book_id);
+
+        if((DB::table('book_user')->where('user_id', $user->id)->where('book_id', $book_id)->count())!=1)
         {
             $user->book_count = $user->book_count - 1 ;
         $user->books()->attach($book_id);
         $user->save();
+         
         flash('The '.$book->name.' has been issued ');
          //return redirect('');
+         return redirect('home');
         
         }
         else
         {
+            
          flash('You have already issued this book.');
+          return redirect('home');
         }
-        return redirect('home');
+       
         
         
     }

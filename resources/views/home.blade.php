@@ -9,7 +9,13 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
+                    
+                     @if(Auth::check())
+                    Hello , {{Auth::user()->name}} </br>
+                    
+                     @endif
                     @include('flash::message')
+
                 </div>
             </div>
         </div>
