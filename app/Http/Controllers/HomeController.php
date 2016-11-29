@@ -27,8 +27,8 @@ class HomeController extends Controller
     {   if(Auth::check() )
         {
             $user = Auth::user();
-            
-            return view('home',compact('user'));
+            $books = $user->books;
+            return view('home',compact('user','books'));
         }
         else{
             return view('home');

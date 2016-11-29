@@ -10,9 +10,9 @@ class Book extends Model
     //
       protected $fillable = ['name','author','publisher','available_no'];
       protected $casts = ['user_id'=> 'int',];
-      public function user()
+      public function users()
     {
-        return $this->belongsTo(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
    
 }

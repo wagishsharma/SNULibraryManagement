@@ -53,7 +53,8 @@
                     <li><a href="{{ url('home') }}">Home</a></li>
                      @if(Auth::check() && Auth::user()->isAdmin())
                     <li><a href="{{ url('book/create') }}">Add books</a></li>
-                    <li><a href="{{ url('/showQR') }}">Show QR</a></li>
+                    <li><a href="{{ url('showQR') }}">Show QR</a></li>
+
                     @endif
                     <li><a href="{{ url('book') }}">Show all books</a></li>
                 </ul>
