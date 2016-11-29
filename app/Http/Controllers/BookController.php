@@ -140,7 +140,7 @@ class BookController extends Controller
          //$this->books=book::all();
         if(Auth::check() && Auth::user()->isAdmin())
         {   $user = User::find($user_id);
-            $book = User::find($book_id);
+            $book = Book::find($book_id);
             DB::table('book_user')->where('user_id',$user_id)->where('book_id',$book_id)->delete();
             $user->book_count = $user->book_count +1 ;
             $book->available_no = $book->available_no + 1 ;

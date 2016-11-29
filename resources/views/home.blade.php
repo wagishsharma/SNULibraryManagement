@@ -9,23 +9,28 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    
+                     @include('flash::message')
                      @if(Auth::check())
                         Hello , {{Auth::user()->name}} </br> </br> </br>
                         @if($user->book_count<5 )
+                         @if(Auth::check() && !Auth::user()->isAdmin())
                         <p>  Your issued books are : </br> </br>
+
                         @foreach ($books as $book)
                             {{$book->name}} </br>
-                        @endforeach
 
+                        @endforeach
+                        </br> </br> </br>
+                        You can issue {{$user->book_count}} more books 
+                        @endif
                         </p>
                         </br>
                         </br>
                         @endif 
-                        You can issue {{$user->book_count}} more books 
+                        
                      @endif
                     
-                    @include('flash::message')
+                   
 
                 </div>
             </div>

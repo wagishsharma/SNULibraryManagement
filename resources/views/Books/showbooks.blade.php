@@ -9,7 +9,7 @@
 
                 <div >
                     <div class="panel-heading">
-                        Current books       (Click on book Name to add tests related to book)
+                        Current books      
                     </div>
 
                     <div class="table-responsive">
