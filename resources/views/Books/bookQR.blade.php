@@ -77,7 +77,7 @@
                                    
                 @else 
                
-                    @if($book->available_no <= 0)
+                    @if($books->available_no <= 0)
                     Book not Avaiable
                    
                     
