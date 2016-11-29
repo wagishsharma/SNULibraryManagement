@@ -40,6 +40,13 @@
                                 <input type="text" name="publisher" id="book-publisher" class="form-control" value="{{ old('receipt') }}">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="book-available_no" class="col-sm-3 control-label">Total Available</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" name="available_no" id="book-available_no" class="form-control" value="{{ old('receipt') }}">
+                            </div>
+                        </div>
                          
 
                         <!-- Add book Button -->

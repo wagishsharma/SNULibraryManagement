@@ -11,9 +11,18 @@
                 <div class="panel-body">
                     
                      @if(Auth::check())
-                    Hello , {{Auth::user()->name}} </br>
-                    
+                        Hello , {{Auth::user()->name}} </br> </br> </br>
+                        @if($user->book_count<5 )
+                        <p>  Your issued books are : </br>
+                        @for ($i = 0; $i < 5- $user->book_count; $i++)
+                             </br>
+                        @endfor
+
+                        </p>
+                        @endif 
+                        You can issue {{$user->book_count}} more books 
                      @endif
+                    
                     @include('flash::message')
 
                 </div>

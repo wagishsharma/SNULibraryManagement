@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,17 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   if(Auth::check() )
+        {
+            $user = Auth::user();
+            
+            return view('home',compact('user'));
+        }
+        else{
+            return view('home');
+        }
+        
+        
+        
     }
 }

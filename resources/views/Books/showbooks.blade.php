@@ -19,6 +19,7 @@
                                 <th>Name</th>
                                 <th>Author</th>
                                 <th>Publisher</th>
+                                <th>Total Available</th>
                                  @if(Auth::check() && Auth::user()->isAdmin())
                                 <th>&nbsp;</th>
                                 @endif
@@ -29,6 +30,7 @@
                                         <td class="table-text"><div>{{ $book->name }}</div></td> 
                                         <td class="table-text"><div>{{ $book->author }}</div></td>
                                         <td class="table-text"><div>{{ $book->publisher }}</div></td>
+                                        <td class="table-text"><div>{{ $book->available_no }}</div></td>
                                                                                
                                        
                                         @if(Auth::check() && Auth::user()->isAdmin())

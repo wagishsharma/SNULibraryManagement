@@ -61,7 +61,7 @@ class BookController extends Controller
          $this->validate($request, [
             'name' => 'required|max:255','publisher'=>'required|max:255', 'author'=>'required|max:255']);
          $book =  Book::create([
-            'name' => $request->name,'author'=>$request->author,'publisher' => $request->publisher,
+            'name' => $request->name,'author'=>$request->author,'publisher' => $request->publisher,'available_no' => $request->available_no,
         ]);
          return redirect('book');
     }
@@ -143,8 +143,11 @@ class BookController extends Controller
 
         if((DB::table('book_user')->where('user_id', $user->id)->where('book_id', $book_id)->count())!=1)
         {
-            $user->book_count = $user->book_count - 1 ;
+        $user->book_count = $user->book_count - 1 ;
+        $book->available_no = $book->available_no - 1 ;
+        
         $user->books()->attach($book_id);
+        $book->save();
         $user->save();
          
         flash('The '.$book->name.' has been issued ');
